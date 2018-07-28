@@ -18,6 +18,7 @@ const { prefix,
     defaultrole, 
     defaultroleonoff, 
     welcome, 
+    welcomeonoff,
     warningcount, 
     warningcountonoff,
     automutetime, 
@@ -130,11 +131,13 @@ client.on('guildMemberAdd', member => {
     }
     var newUsers = '';
     const guild = member.guild;
-    const defaultChannel = guild.channels.find(c=> c.permissionsFor(guild.me).has("SEND_MESSAGES"));
-    color = 16777215;
-    title = '[welcome!]';
-    text = `${member}, ${welcome}`;
-    defaultChannel.send(infomessage(color, title, text));
+    if(welcomeonoff == 'on'){
+        const defaultChannel = guild.channels.find(c=> c.permissionsFor(guild.me).has("SEND_MESSAGES"));
+        color = 16777215;
+        title = '[welcome!]';
+        text = `${member}, ${welcome}`;
+        defaultChannel.send(infomessage(color, title, text));
+    }
 })
 
 client.on('message', message => {
