@@ -1,0 +1,24 @@
+{
+  "name": "chatbotbycheese",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "cheese",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs": "0.0.1-security",
+    "get-youtube-id": "^1.0.0",
+    "ms": "^2.1.1",
+    "opusscript": "0.0.6",
+    "package-lock.json": "^1.0.0",
+    "package.json": "^2.0.1",
+    "pm2": "^2.10.4",
+    "request": "^2.87.0",
+    "weather-js": "^2.0.0",
+    "youtube-info": "^1.2.0",
+    "youtube-search": "^1.1.1",
+    "ytdl-core": "^0.20.4"
+  }
+}
