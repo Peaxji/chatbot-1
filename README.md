@@ -4,12 +4,12 @@ chatbot discord by cheesega - новый бот для чата в програ�
 Обязательно заполните config.json! Туда вставляете токен бота и остальные параметры, так же permission!
 # install
 apt-get install sudo zip unzip nano curl<br>
-curl --silent --location https://deb.nodesource.com/setup_8.x| bash -
-apt-get install --yes nodejs
-apt-get update
-apt-get upgrade
-apt-get install git
-git clone https://github.com/cheesegaproj/chatbot.git
-npm i pm2 -g
-cd chatbot
-npm install
+curl --silent --location https://deb.nodesource.com/setup_8.x| bash -<br>
+apt-get install --yes nodejs<br>
+apt-get update<br>
+apt-get upgrade<br>
+apt-get install git<br>
+git clone https://github.com/cheesegaproj/chatbot.git<br>
+npm i pm2 -g<br>
+cd chatbot<br>
+npm install<br>
