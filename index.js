@@ -1592,7 +1592,7 @@ client.on('channelUpdate', channel => {
             .setAuthor(`Обновление канала ${channel.name}`)
             .setColor(16777215)
             .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
-            .setDescription(`Был обновлен калан **${channel.name}**. Его тип: ${channel.type}.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
+            .setDescription(`Был обновлен канал **${channel.name}**. Его тип: ${channel.type}.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel2.send(embed);
     }
 })
