@@ -164,7 +164,7 @@ client.on('message', message => {
     const commandName = args.shift().toLowerCase();
     if(commandName == "info") {
         if(!args.length) {
-           text = `${language.oneinfo} **${config.prefix}info 1**):\n**1. ${config.prefix}mute\n2. ${config.prefix}addmat\n3. ${config.prefix}unmute\n4. ${config.prefix}muted\n5. ${config.prefix}github\n6. ${config.prefix}kick\n7. ${config.prefix}ban\n8. ${config.prefix}unban\n9. ${config.prefix}rainbow\n10. ${config.prefix}coin\n11. ${config.prefix}exit\n12. ${config.prefix}report\n13.${config.prefix}warnings\n14. ${config.prefix}rwarnings**`;
+           text = `${language.oneinfo} **${config.prefix}info 1**):\n**1. ${config.prefix}mute\n2. ${config.prefix}addmat\n3. ${config.prefix}unmute\n4. ${config.prefix}muted\n5. ${config.prefix}github\n6. ${config.prefix}kick\n7. ${config.prefix}ban\n8. ${config.prefix}unban\n9. ${config.prefix}rainbow\n10. ${config.prefix}coin\n11. ${config.prefix}exit\n12. ${config.prefix}report\n13.${config.prefix}warnings\n14. ${config.prefix}rwarnings\n15. ${config.prefix}weather**`;
            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
 		   const embed = new Discord.RichEmbed()
 		    .setAuthor(`[${config.prefix}info]`)
@@ -183,12 +183,12 @@ client.on('message', message => {
                     const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 });
                     
                     backwards.on('collect', r => {
-                        embed.setDescription(`${language.oneinfo} **${config.prefix}info 1**):\n**1. ${config.prefix}mute\n2. ${config.prefix}addmat\n3. ${config.prefix}unmute\n4. ${config.prefix}muted\n5. ${config.prefix}github\n6. ${config.prefix}kick\n7. ${config.prefix}ban\n8. ${config.prefix}unban\n9. ${config.prefix}rainbow\n10. ${config.prefix}coin\n11. ${config.prefix}exit\n12. ${config.prefix}report\n13.${config.prefix}warnings\n14. ${config.prefix}rwarnings**\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`);
+                        embed.setDescription(`${language.oneinfo} **${config.prefix}info 1**):\n**1. ${config.prefix}mute\n2. ${config.prefix}addmat\n3. ${config.prefix}unmute\n4. ${config.prefix}muted\n5. ${config.prefix}github\n6. ${config.prefix}kick\n7. ${config.prefix}ban\n8. ${config.prefix}unban\n9. ${config.prefix}rainbow\n10. ${config.prefix}coin\n11. ${config.prefix}exit\n12. ${config.prefix}report\n13.${config.prefix}warnings\n14. ${config.prefix}rwarnings\n15. ${config.prefix}weather**\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`);
                         msg.edit(embed)
                     })
                     
                     forwards.on('collect', r => {
-                        embed.setDescription(`${language.oneinfo} **${config.prefix}info 1**):\n**15. ${config.prefix}weather\n16. ${config.prefix}clear\n17. ${config.prefix}clean\n18. ${config.prefix}admins\n19. ${config.prefix}restart\n20. ${config.prefix}play\n21. ${config.prefix}pause\n22. ${config.prefix}resume\n23. ${config.prefix}skip\n24 ${config.prefix}volume\n25. ${config.prefix}remove\n26. ${config.prefix}queue\n27. ${config.prefix}lvl\n28. ${config.prefix}setlvl\n29. ${config.prefix}roulette**\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`);
+                        embed.setDescription(`${language.oneinfo} **${config.prefix}info 1**):\n**16. ${config.prefix}clear\n17. ${config.prefix}clean\n18. ${config.prefix}admins\n19. ${config.prefix}restart\n20. ${config.prefix}play\n21. ${config.prefix}pause\n22. ${config.prefix}resume\n23. ${config.prefix}skip\n24 ${config.prefix}volume\n25. ${config.prefix}remove\n26. ${config.prefix}queue\n27. ${config.prefix}lvl\n28. ${config.prefix}setlvl\n29. ${config.prefix}roulette\n30. ${config.prefix}sendlog\n31. ${config.prefix}say**\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`);
                         msg.edit(embed)
                     })
                 })
@@ -321,7 +321,7 @@ client.on('message', message => {
         if(args[0] == "16"){
             color = 16777215;
             title = `[${config.prefix}info 16]`;
-            text = language.info16.replace('{0}', confid.prefix);
+            text = language.info16.replace('{0}', config.prefix);
             console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
             message.channel.send(infomessage(color, title, text));
             return;
@@ -392,8 +392,8 @@ client.on('message', message => {
         }
         if(args[0] == "25"){
             color = 16777215;
-            title = `[${config}info 25]`;
-            text = language.info25.replace('{0}', prefix);
+            title = `[${config.prefix}info 25]`;
+            text = language.info25.replace('{0}', config.prefix);
             console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
             message.channel.send(infomessage(color, title, text));
             return;
@@ -426,6 +426,22 @@ client.on('message', message => {
             color = 16777215;
             title = `[${config.prefix}info 29]`;
             text = language.info29.replace('{0}', config.prefix);
+            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+            message.channel.send(infomessage(color, title, text));
+            return;
+        }
+        if(args[0] == "30"){
+            color = 16777215;
+            title = `[${config.prefix}info 30]`;
+            text = language.info30.replace('{0}', config.prefix);
+            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+            message.channel.send(infomessage(color, title, text));
+            return;
+        }
+        if(args[0] == "31"){
+            color = 16777215;
+            title = `[${config.prefix}info 31]`;
+            text = language.info31.replace('{0}', config.prefix);
             console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
             message.channel.send(infomessage(color, title, text));
             return;
