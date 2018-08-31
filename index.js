@@ -114,7 +114,7 @@ client.on('guildMemberAdd', member => {
         const embed = new Discord.RichEmbed()
         .setAuthor(`${member.user.username}#${member.user.discriminator}`, member.user.avatarURL)
         .setColor(16777215)
-        .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+        .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
         .setDescription(`Пользователь зашел на сервер.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
        channel.send(embed);
         }
@@ -169,7 +169,7 @@ client.on('message', message => {
 		   const embed = new Discord.RichEmbed()
 		    .setAuthor(`[${config.prefix}info]`)
             .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`${text}\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
 		   message.channel.send(embed)
 			.then(function (msg) {
@@ -520,7 +520,7 @@ client.on('message', message => {
             const embed = new Discord.RichEmbed()
             .setColor('0080FF')
             .setAuthor(`[${config.prefix}lvl]`)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .addField("Очки", lvls[message.author.id], true)
             .addField("Звание", text, true)
             message.channel.send(embed).then(msg => msg.delete(5000));
@@ -541,7 +541,7 @@ client.on('message', message => {
             const embed = new Discord.RichEmbed()
             .setColor('0080FF')
             .setAuthor(`[${config.prefix}lvl]`)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .addField("Очки пользователя", lvls[member.id], true)
             .addField("Звание пользователя", text, true)
             message.channel.send(embed).then(msg => msg.delete(5000));
@@ -868,7 +868,7 @@ client.on('message', message => {
         if(rand == "0"){
             const embed = new Discord.RichEmbed()
                 .setColor(14286592)
-                .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+                .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
                 .setThumbnail("https://images-ext-1.discordapp.net/external/psw8bjb7MLk5ifrtsyYLtYf_UORozzkQrctGwklKc7U/https/i.imgur.com/ZyCwWuE.png")
                 .addField("Coin", "\nВы проиграли. Отнимаем у вас 50 опыта!")
                 message.channel.send(embed).then(msg => msg.delete(5000));
@@ -878,7 +878,7 @@ client.on('message', message => {
         if(rand == '1'){
             const embed = new Discord.RichEmbed()
                 .setColor(14286592)
-                .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+                .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
                 .setThumbnail("https://images-ext-1.discordapp.net/external/0Aqs6FQriCBitmkZqMNBhedGhVM-J8wDVPnHQhFhdgQ/https/i.imgur.com/9FsWNZk.png")
                 .addField("Coin", "\nВы выиграли. Начисляем вам 50 опыта!")
             message.channel.send(embed).then(msg => msg.delete(5000));
@@ -909,7 +909,7 @@ client.on('message', message => {
         channel = message.guild.channels.find('name', config.reportchannel);
         const embed = new Discord.RichEmbed()
             .setColor(13632027)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .addField("Нарушитель", `<@${user.id}>`)
             .addField("Канал", `${message.channel}`)
             .addField("Отправитель", `<@${message.author.id}>`)
@@ -949,7 +949,7 @@ client.on('message', message => {
             .addField('Температура',`${current.temperature} градусов`, true)
             .addField('Ветер',current.winddisplay, true)
             .addField('Влажность', `${current.humidity}%\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`, true)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png");
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg");
             message.channel.send(weather);
         });
         return;
@@ -1071,7 +1071,7 @@ client.on('message', message => {
         const embed = new Discord.RichEmbed()
 		    .setAuthor(`░▒▓▢Attention!▢▓▒░`)
             .setColor(16711680)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`${sayMessage}\nАвтор объявления: ${message.author}\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`);
 		channel.send(embed);
         return;
@@ -1235,7 +1235,7 @@ client.on('message', message => {
         const embed = new Discord.RichEmbed()
             .setColor(16734464)
             .setAuthor(title)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`${text}\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         message.channel.send(embed);
         return
@@ -1304,7 +1304,7 @@ async function purge(message, args) {
 function infomessage(color, title, text) {
         const embed = new Discord.RichEmbed()
             .setColor(color)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .addField(title, `${text}\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         return embed;
 
@@ -1318,7 +1318,7 @@ function Mute(message, args, auto) {
     if(!tomute){
         const embed = new Discord.RichEmbed()
             .setColor(16734464)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .addField(`[${config.prefix}mute]`, `Используйте ${config.prefix}mute @user 1s/m/h/d!\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         message.channel.send(embed);
         return
@@ -1327,7 +1327,7 @@ function Mute(message, args, auto) {
     if(!mutetime){
         const embed = new Discord.RichEmbed()
             .setColor(16734464)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")        
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")        
             .addField("[!mute]", `Вы не указали время!\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
             message.channel.send(embed);
         return
@@ -1349,7 +1349,7 @@ function Mute(message, args, auto) {
         let user = client.guilds.get(config.serverid).members.get(tomute.id).user;
         const embed = new Discord.RichEmbed()
             .setColor(13632027)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .addField("User", `<@${tomute.id}>`, true)
             .addField("Moderator", `<@${mod.id}>`, true)
             .addField("Reason", `${reason}`, true)
@@ -1542,7 +1542,7 @@ client.on('guildMemberRemove', member => {
         const embed = new Discord.RichEmbed()
             .setAuthor(`${member.user.username}#${member.user.discriminator}`, member.user.avatarURL)
             .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`Пользователь вышел с сервера.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel.send(embed);
     }
@@ -1553,7 +1553,7 @@ client.on('channelCreate', channel => {
         const embed = new Discord.RichEmbed()
             .setAuthor(`Создание канала ${channel.name}`)
             .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`Был создан канал **${channel.name}**. Его тип: ${channel.type}.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel.send(embed);
     }
@@ -1564,7 +1564,7 @@ client.on('channelDelete', channel =>{
         const embed = new Discord.RichEmbed()
             .setAuthor(`Удаление канала ${channel.name}`)
             .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`Был удален канал **${channel.name}**. Его тип: ${channel.type}.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel1.send(embed);
     }
@@ -1575,7 +1575,7 @@ client.on('channelUpdate', channel => {
         const embed = new Discord.RichEmbed()
             .setAuthor(`Обновление канала ${channel.name}`)
             .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`Был обновлен калан **${channel.name}**. Его тип: ${channel.type}.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel2.send(embed);
     }
@@ -1586,7 +1586,7 @@ client.on('roleUpdate', role => {
         const embed = new Discord.RichEmbed()
             .setAuthor(`Обновление роли ${role.name}`)
             .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`Была обновлена роль **${role.name}**.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel.send(embed);
     }
@@ -1597,7 +1597,7 @@ client.on('roleDelete', role => {
         const embed = new Discord.RichEmbed()
             .setAuthor(`Удаление роли ${role.name}`)
             .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`Была удалена роль **${role.name}**.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel.send(embed);
     }
@@ -1608,7 +1608,7 @@ client.on('guildBanAdd', (guild,user) => {
         const embed = new Discord.RichEmbed()
             .setAuthor(`Новый бан`)
             .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`**${user.username}#${user.discriminator}** был забанен на сервере.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel.send(embed);
     }
@@ -1619,7 +1619,7 @@ client.on('guildBanRemove', (guild,user) => {
         const embed = new Discord.RichEmbed()
             .setAuthor(`Разбан`)
             .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`**${user.username}#${user.discriminator}** был разбанен на сервере.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel.send(embed);
     }
