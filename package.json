@@ -7,6 +7,8 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^11.3.2",
+    "ffmpeg-binaries": "^4.0.0",
+    "ffmpeg-static": "^2.3.0",
     "fluent-ffmpeg": "^2.1.2",
     "fs": "0.0.1-security",
     "get-youtube-id": "^1.0.0",
