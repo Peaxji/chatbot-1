@@ -1,6 +1,6 @@
 var config = {
     prefix: "!",
-    token: "NDQ0ODMyMzE4MTU1MjU5OTA0.Dmmsxg.XjOUUxHONZ6d_8kgNhGLV3XPeWA",
+    token: "",
     serverid: "444807879258669056",
     rainbowroles: "cheesegarole",
     rainbowrolesonoff:"off",
@@ -16,7 +16,7 @@ var config = {
     warningcount: "3",
     warningcountonoff:"off",
     automutetime: "6h",
-    yt_api_key: "AIzaSyDkFneQ0Zt8r6nvvjnWuXEZpjcBWUR5h3k",
+    yt_api_key: "",
     lvlsonoff:"off",
     lvlplus:5,
     winnersandover:105,
