@@ -1,0 +1,14 @@
+@echo off
+chcp 1251 >nul
+echo **********************
+echo   ____  _     _            
+>nul timeout /nobreak 1
+echo  !  _ \(_) __! ! ___  _ __ 
+>nul timeout /nobreak 1
+echo  ! !_) ! !/ _` !/ _ \! '__!
+>nul timeout /nobreak 1
+echo  !  __/! ! (_! ! (_) ! !   
+echo >nul timeout /nobreak 1
+echo  !_!   !_!\__,_!\___/!_! 
+>nul timeout /nobreak 1
+echo **********************
