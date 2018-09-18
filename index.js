@@ -21,9 +21,6 @@ const opts = {
   key: config.yt_api_key
 };
 const client = new Discord.Client();
-<<<<<<< HEAD
-var lvls = JSON.parse(fs.readFileSync('lvls.json'));
-=======
 client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -32,15 +29,10 @@ for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
 }
->>>>>>> pre-release 2.9
 var mutedlist = JSON.parse(fs.readFileSync('muted.json'));
 var infobanlist = JSON.parse(fs.readFileSync('infoban.json'));
 var badwordslist = JSON.parse(fs.readFileSync('words.json'));
 var perms = require('./permissions.js');
-<<<<<<< HEAD
-var weather = require('weather-js');
-=======
->>>>>>> pre-release 2.9
 var IsAuth = false;
 /* RAINBOW START */
 var interval;
@@ -49,15 +41,9 @@ const size = 40;
 const rainbow = new Array(size);
 
 for (var i=0; i<size; i++) {
-<<<<<<< HEAD
-  var red   = sin_to_hex(i, 0 * Math.PI * 2/3); // 0   deg
-  var blue  = sin_to_hex(i, 1 * Math.PI * 2/3); // 120 deg
-  var green = sin_to_hex(i, 2 * Math.PI * 2/3); // 240 deg
-=======
   var red   = sin_to_hex(i, 0 * Math.PI * 2/3);
   var blue  = sin_to_hex(i, 1 * Math.PI * 2/3);
   var green = sin_to_hex(i, 2 * Math.PI * 2/3);
->>>>>>> pre-release 2.9
 
   rainbow[i] = '#'+ red + green + blue;
 }
@@ -92,13 +78,8 @@ client.login(config.token).catch(err => {
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!\nHello! I am moderation bot :) 
 My creator — cheesega
-<<<<<<< HEAD
-Version: 2.8
-github — https://github.com/cheesegaproj
-=======
 Version: 2.9
 github — https://github.com/cheesegaproj/chatbot
->>>>>>> pre-release 2.9
 Discord — cheesega#9496
 Hmm... You are ready? Go!`);
     IsAuth = true;
@@ -139,7 +120,7 @@ client.on('guildMemberAdd', member => {
         const embed = new Discord.RichEmbed()
         .setAuthor(`${member.user.username}#${member.user.discriminator}`, member.user.avatarURL)
         .setColor(16777215)
-        .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+        .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
         .setDescription(`Пользователь зашел на сервер.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
        channel.send(embed);
         }
@@ -173,12 +154,7 @@ client.on('message', message => {
 			});
         }
         if(config.lvlsonoff == 'on'){
-<<<<<<< HEAD
-            if(!lvls[message.author.id]) lvls[message.author.id] = 0;
-            lvls[message.author.id]+=config.lvlplus;
-=======
             client.commands.get('lvlup').execute(message);
->>>>>>> pre-release 2.9
             if(config.giverainbowlvlten == 'on'){
                 if(lvls[message.author.id]>=config.tenlvl){
                     member = message.guild.member(message.author);
@@ -191,350 +167,6 @@ client.on('message', message => {
     };
     const args = message.content.slice(config.prefix.length).split(/ +/);
     const commandName = args.shift().toLowerCase();
-<<<<<<< HEAD
-    if(commandName == "info") {
-        if(!args.length) {
-           text = `${language.oneinfo} **${config.prefix}info 1**):\n**1. ${config.prefix}mute\n2. ${config.prefix}addmat\n3. ${config.prefix}unmute\n4. ${config.prefix}muted\n5. ${config.prefix}github\n6. ${config.prefix}kick\n7. ${config.prefix}ban\n8. ${config.prefix}unban\n9. ${config.prefix}rainbow\n10. ${config.prefix}coin\n11. ${config.prefix}exit\n12. ${config.prefix}report\n13.${config.prefix}warnings\n14. ${config.prefix}rwarnings\n15. ${config.prefix}weather**`;
-           console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-		   const embed = new Discord.RichEmbed()
-		    .setAuthor(`[${config.prefix}info]`)
-            .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
-            .setDescription(`${text}\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
-		   message.channel.send(embed)
-			.then(function (msg) {
-                msg.react("◀").then(r => {
-                    msg.react("▶");
-                    
-                    const backwardsFilter = (reaction, user) => reaction.emoji.name === '◀' && user.id === message.author.id;
-                    const forwardsFilter = (reaction, user) => reaction.emoji.name === '▶' && user.id === message.author.id;
-                    
-                    const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 });
-                    const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 });
-                    
-                    backwards.on('collect', r => {
-                        embed.setDescription(`${language.oneinfo} **${config.prefix}info 1**):\n**1. ${config.prefix}mute\n2. ${config.prefix}addmat\n3. ${config.prefix}unmute\n4. ${config.prefix}muted\n5. ${config.prefix}github\n6. ${config.prefix}kick\n7. ${config.prefix}ban\n8. ${config.prefix}unban\n9. ${config.prefix}rainbow\n10. ${config.prefix}coin\n11. ${config.prefix}exit\n12. ${config.prefix}report\n13.${config.prefix}warnings\n14. ${config.prefix}rwarnings\n15. ${config.prefix}weather**\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`);
-                        msg.edit(embed)
-                    })
-                    
-                    forwards.on('collect', r => {
-                        embed.setDescription(`${language.oneinfo} **${config.prefix}info 1**):\n**16. ${config.prefix}clear\n17. ${config.prefix}clean\n18. ${config.prefix}admins\n19. ${config.prefix}restart\n20. ${config.prefix}play\n21. ${config.prefix}pause\n22. ${config.prefix}resume\n23. ${config.prefix}skip\n24 ${config.prefix}volume\n25. ${config.prefix}remove\n26. ${config.prefix}queue\n27. ${config.prefix}lvl\n28. ${config.prefix}setlvl\n29. ${config.prefix}roulette\n30. ${config.prefix}sendlog\n31. ${config.prefix}say**\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`);
-                        msg.edit(embed)
-                    })
-                })
-            }).catch(err => {
-           // handle rejection here
-        })
-            return;
-        };
-        if(args[0] == "1"){
-            color = 16777215;
-            title = `[${config.prefix}info 1]`;
-            text = language.info1.replace('{0}', config.prefix);
-            message.channel.send(infomessage(color, title, text));         
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            return;
-        }
-        if(args[0] == "2"){
-            color = 16777215;
-            title = `[${config.prefix}info 2]`;
-            text = language.info2.replace('{0}', config.prefix);     
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "3"){
-            color = 16777215;
-            title = `[${config.prefix}info 3]`;
-            text = language.info3.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "4"){
-            color = 16777215;
-            title = `[${config.prefix}info 4]`;
-            text = language.info4.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "5"){
-            color = 16777215;
-            title = `[${config.prefix}info 5]`;
-            text = language.info5.replace('{0}', config.prefix);
-            message.channel.send(infomessage(color, title, text));
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            return;
-        }
-        if(args[0] == "6"){
-            color = 16777215;
-            title = `[${config.prefix}info 6]`;
-            text = language.info6.replace('{0}', config.prefix);      
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "7"){
-            color = 16777215;
-            title = `[${config.prefix}info 7]`;
-            text = language.info7.replace('{0}', config.prefix);       
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "8"){
-            color = 16777215;
-            title = `[${config.prefix}info 8]`;
-            text = language.info8.replace('{0}', config.prefix);      
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "9"){
-            color = 16777215;
-            title = `[${config.prefix}info 9]`;
-            text = language.info9.replace('{0}', config.prefix);
-            text = text.replace('{0}', config.prefix);  
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "10"){
-            color = 16777215;
-            title = `[${config.prefix}info 10]`;
-            text = language.info10.replace('{0}', config.prefix);     
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "11"){
-            color = 16777215;
-            title = `[${config.prefix}info 11]`;
-            text = language.info11.replace('{0}', config.prefix);     
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "12"){
-            color = 16777215;
-            title = `[${config.prefix}info 12]`;
-            text = language.info12.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "13"){
-            color = 16777215;
-            title = `[${config.prefix}info 13]`;
-            text = language.info13.replace(/%/g, config.prefix);       
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "14"){
-            color = 16777215;
-            title = `[${config.prefix}info 14]`;
-            text = language.info14.replace(/%/g, config.prefix);      
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "15"){
-            color = 16777215;
-            title = `[${config.prefix}info 15]`;
-            text = language.info15.replace('{0}', config.prefix);       
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "16"){
-            color = 16777215;
-            title = `[${config.prefix}info 16]`;
-            text = language.info16.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "17"){
-            color = 16777215;
-            title = `[${config.prefix}info 17]`;
-            text = language.info17.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "18"){
-            color = 16777215;
-            title = `[${config.prefix}info 18]`;
-            text = language.info18.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "19"){
-            color = 16777215;
-            title = `[${config.prefix}info 19]`;
-            text = language.info19.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "20"){
-            color = 16777215;
-            title = `[${config.prefix}info 20]`;
-            text = language.info20.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "21"){
-            color = 16777215;
-            title = `[${config.prefix}info 21]`;
-            text = language.info21.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "22"){
-            color = 16777215;
-            title = `[${config.prefix}info 22]`;
-            text = language.info22.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "23"){
-            color = 16777215;
-            title = `[${config.prefix}info 23]`;
-            text = language.info23.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "24"){
-            color = 16777215;
-            title = `[${config.prefix}info 24]`;
-            text = language.info24.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "25"){
-            color = 16777215;
-            title = `[${config.prefix}info 25]`;
-            text = language.info25.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "26"){
-            color = 16777215;
-            title = `[${config.prefix}info 26]`;
-            text = language.info26.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "27"){
-            color = 16777215;
-            title = `[${config.prefix}info 27]`;
-            text = language.info27.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "28"){
-            color = 16777215;
-            title = `[${config.prefix}info 28]`;
-            text = language.info28.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "29"){
-            color = 16777215;
-            title = `[${config.prefix}info 29]`;
-            text = language.info29.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "30"){
-            color = 16777215;
-            title = `[${config.prefix}info 30]`;
-            text = language.info30.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(args[0] == "31"){
-            color = 16777215;
-            title = `[${config.prefix}info 31]`;
-            text = language.info31.replace('{0}', config.prefix);
-            console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-    }
-    if(commandName == "exit") {
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(perms['root'].indexOf(message.author.id) == -1){
-            color = 16711680;
-            title = `[${config.prefix}exit]`;
-            text = language.error1.replace('{0}', prefix);
-            message.channel.send(infomessage(color, title, text));
-            console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
-            return;
-        }
-            client.destroy().then(process.exit);
-            return;
-        }
-    if(commandName == "clean"){
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(perms['root'].indexOf(message.author.id) == -1){
-            color = 16711680;
-            title = `[${config.prefix}clean]`;
-            text = language.error1.replace('{0}', config.prefix);
-            message.channel.send(infomessage(color, title, text));
-            console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
-            return;
-        }    
-        async function clear() {
-            if(!args[0]){
-                color = 16711680;
-                title = `[${config.prefix}clean]`;
-                text = language.clean1.replace('{0}', config.prefix);;
-                message.channel.send(infomessage(color, title, text));
-                return
-            }
-            const fetched = await message.channel.fetchMessages({limit: args[0]});
-            console.log(fetched.size + ` ${language.clean2}`);
-            message.channel.bulkDelete(fetched).then(() => {
-                color = 16777215;
-                title = `[${config.prefix}clean]`;
-                text = language.clean3.replace('{0}', fetched.size);
-                message.channel.send(infomessage(color, title, text)).then(msg => {msg.delete(5000)});
-            }) 
-        }clear();
-    return;
-};
-    if(commandName == "clear") {
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(perms['root'].indexOf(message.author.id) == -1){
-            color = 16711680;
-            title = `[${config.prefix}clear]`;
-            text = language.error1.replace('{0}', config.prefix);
-            message.channel.send(infomessage(color, title, text));
-            console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
-            return;
-        }
-        purge(message, args);
-        return;
-    }
-    if(commandName == "mute"){
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-=======
 
     if(commandName == "info") {
         console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
@@ -560,7 +192,6 @@ client.on('message', message => {
     }
     if(commandName == "mute"){
         console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
->>>>>>> pre-release 2.9
         if(perms['root'].indexOf(message.author.id) == -1){
             color = 16711680;
             title = `[${prefix}mute]`;
@@ -574,86 +205,6 @@ client.on('message', message => {
     }
 
     if(commandName == "lvl"){
-<<<<<<< HEAD
-        var text = "";
-        let member = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-        message.delete(5000);
-        if(!member){
-            if(!lvls[message.author.id]){text=config.zerolvlname; lvls[message.author.id] = 0;}
-            if(lvls[message.author.id]<config.onelvl) text=config.zerolvlname;
-            if(lvls[message.author.id]>config.onelvl) text=config.onelvlname;
-            if(lvls[message.author.id]>config.twolvl) text=config.twolvlname;
-            if(lvls[message.author.id]>config.triolvl) text=config.triolvlname;
-            if(lvls[message.author.id]>config.fourlvl) text=config.fourlvlname;
-            if(lvls[message.author.id]>config.fivelvl) text=config.fivelvlname;
-            if(lvls[message.author.id]>config.sixlvl) text=config.sixlvlname;
-            if(lvls[message.author.id]>config.sevenlvl) text=config.sevenlvlname;
-            if(lvls[message.author.id]>config.eightlvl) text=config.eightlvlname;
-            if(lvls[message.author.id]>config.ninelvl) text=config.ninelvlname;
-            if(lvls[message.author.id]>config.tenlvl) text=config.tenlvlname;
-            const embed = new Discord.RichEmbed()
-            .setColor('0080FF')
-            .setAuthor(`[${config.prefix}lvl]`)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
-            .addField("Очки", lvls[message.author.id], true)
-            .addField("Звание", text, true)
-            message.channel.send(embed).then(msg => msg.delete(5000));
-            return;
-        }else{
-            if(!lvls[member.id]){text=zerolvlname; lvls[message.author.id] = 0;}
-            if(lvls[member.id]<config.onelvl) text=config.zerolvlname
-            if(lvls[member.id]>config.onelvl) text=config.onelvlname;
-            if(lvls[member.id]>config.twolvl) text=config.twolvlname;
-            if(lvls[member.id]>config.triolvl) text=config.triolvlname;
-            if(lvls[member.id]>config.fourlvl) text=config.fourlvlname;
-            if(lvls[member.id]>config.fivelvl) text=config.fivelvlname;
-            if(lvls[member.id]>config.sixlvl) text=config.sixlvlname;
-            if(lvls[member.id]>config.sevenlvl) text=config.sevenlvlname;
-            if(lvls[member.id]>config.eightlvl) text=config.eightlvlname;
-            if(lvls[member.id]>config.ninelvl) text=config.ninelvlname;
-            if(lvls[member.id]>config.tenlvl) text=config.tenlvlname;
-            const embed = new Discord.RichEmbed()
-            .setColor('0080FF')
-            .setAuthor(`[${config.prefix}lvl]`)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
-            .addField("Очки пользователя", lvls[member.id], true)
-            .addField("Звание пользователя", text, true)
-            message.channel.send(embed).then(msg => msg.delete(5000));
-            return;
-        }
-    }
-
-    if(commandName == "setlvl"){
-        if(perms['root'].indexOf(message.author.id) == -1){
-            color = 16711680;
-            title = `[${config.prefix}setlvl]`;
-            text = language.error1.replace('{0}', config.prefix);
-            message.channel.send(infomessage(color, title, text));
-            console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
-            return;
-        }
-        if(!args[0]){
-            color = 16711680;
-            title = `[${config.prefix}setlvl]`;
-            text = `Вы не упомянули пользователя!`;
-            message.channel.send(infomessage(color, title, text));
-            return
-        }
-        if(!args[1]){
-            color = 16711680;
-            title = `[${config.prefix}setlvl]`;
-            text = `Введите количество очков!`;
-            message.channel.send(infomessage(color, title, text));
-            return
-        }
-        let member = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-        let setvalue = parseFloat(args[1]);
-        lvls[member.id]=setvalue;
-        color = '00FF89';
-        title = `[${config.prefix}setlvl]`;
-        text = `Вы установили у пользователя ${member} количество очков: ${setvalue}!`;
-        message.channel.send(infomessage(color, title, text));
-=======
         console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         client.commands.get('lvl').execute(message, args);
         return;
@@ -662,112 +213,16 @@ client.on('message', message => {
     if(commandName == "setlvl"){
         console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         client.commands.get('setlvl').execute(message, args);
->>>>>>> pre-release 2.9
         return
     }
 
     if(commandName == "rwarnings"){
-<<<<<<< HEAD
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(perms['owner'].indexOf(message.author.id) == -1){
-            color = 16711680;
-            title = `[${config.prefix}rwarnings]`;
-            text = language.error1.replace('{0}', config.prefix);
-            message.channel.send(infomessage(color, title, text));
-            console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
-            return;
-        }
-        let member = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-        if(!member){
-            color = 16777215;
-            title = `[${config.prefix}rwarnings]`;
-            text = `У вас удалены все предупреждения!`;
-            message.channel.send(infomessage(color, title, text));
-            delete infobanlist[message.author.id];
-            return;
-        }
-        delete infobanlist[member.id];
-        color = 16734464;
-        title = `[${config.prefix}rwarnings]`;
-        text = `Все предупреждения у пользователя ${member} удалены!`;
-        message.channel.send(infomessage(color, title, text));
-=======
         console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         client.commands.get('rwarnings').execute(message, args);
->>>>>>> pre-release 2.9
         return;
     }
 
     if(commandName == "warnings"){
-<<<<<<< HEAD
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        let member = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-        if(!member){
-            if(!infobanlist[message.author.id]){
-                color = 16777215;
-                title = `[${config.prefix}warnings]`;
-                text = `У вас  **0** предупреждений(я/е)!`;
-                message.channel.send(infomessage(color, title, text));
-            return;
-            }
-            color = 16777215;
-            title = `[${config.prefix}warnings]`;
-            text = `У вас  **${infobanlist[message.author.id]}** предупреждений(я/е)!`;
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }else{
-            if(!infobanlist[member.id]){
-                color = 16777215;
-            title = `[${config.prefix}warnings]`;
-            text = `У пользователя ${member},  **0** предупреждений(я/е)!`;
-            message.channel.send(infomessage(color, title, text));
-            return;
-            }
-            color = 16777215;
-            title = `[${config.prefix}warnings]`;
-            text = `У пользователя ${member},  **${infobanlist[member.id]}** предупреждений(я/е)!`;
-            message.channel.send(infomessage(color, title, text));
-        }
-        return;
-    }
-
-    if(commandName == "addmat") {
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(perms['root'].indexOf(message.author.id) == -1){
-            color = 16711680;
-            title = `[${config.prefix}addmat]`;
-            text = language.error1.replace('{0}', config.prefix);
-            message.channel.send(infomessage(color, title, text));
-            console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
-            return;
-        }
-        var replace = /\[(.*?)\]/ism;
-        var matches = replace.exec(message.content); 
-        if(!matches){
-            color = 16734464;
-            title = `[${config.prefix}addmat]`;
-            text = `Используйте ${config.prefix}addmat [слово]!`;
-            message.channel.send(infomessage(color, title, text));
-            return;
-        }
-        if(badwordslist.indexOf("^"+matches[1]+"$") == -1){
-        	badwordslist.push("^"+matches[1]+"$");
-        	color = 16711680;
-            title = `[${config.prefix}addmat]`;
-            text = `Слово было добавлено в список запрещённых слов!`;
-            message.channel.send(infomessage(color, title, text));
-        	return;
-        }else{
-        	color = 16711680;
-            title = `[${config.prefix}addmat]`;
-            text = `Это слово уже есть в списке запрещённых слов!`;
-            message.channel.send(infomessage(color, title, text));
-        	return;
-        }
-    }
-    if(commandName == "unmute"){
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-=======
         console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         client.commands.get('warnings').execute(message, args);
         return;
@@ -780,7 +235,6 @@ client.on('message', message => {
     }
     if(commandName == "unmute"){
         console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
->>>>>>> pre-release 2.9
         if(perms['root'].indexOf(message.author.id) == -1){
             color = 16711680;
             title = `[${config.prefix}unmute]`;
@@ -817,62 +271,6 @@ client.on('message', message => {
         }
         return;
     }
-<<<<<<< HEAD
-    
-    if(commandName == "muted") {
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        var text = '';
-        for (var key in mutedlist) {
-            text += `\nПользователь <@${key}> сидит ещё ${ms(mutedlist[key])}`;
-        }
-        if(text == ""){
-            color = 5504768;
-            title = `[${config.prefix}muted]`;
-            text = `Пользователей в муте нет!`;
-            message.channel.send(infomessage(color, title, text));
-        } else {
-            color = 5504768;
-            title = `[${config.prefix}muted]`;
-            text = `${text}`;
-            message.channel.send(infomessage(color, title, text));
-        }
-        return;
-    }
-    if(commandName == "github"){
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        color = 5504768;
-        title = `[${config.prefix}github]`;
-        text = `\nМой github - [жми](https://github.com/cheesegaproj/chatbot)`;
-        message.channel.send(infomessage(color, title, text));
-        return;
-    }
-    
-    if(commandName == "kick"){
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(perms['root'].indexOf(message.author.id) == -1){
-            color = 16711680;
-            title = `[${config.prefix}kick]`;
-            text = language.error1.replace('{0}', config.prefix);
-            message.channel.send(infomessage(color, title, text));
-            console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
-            return;
-        }
-        let member = message.mentions.members.first();
-        let tounmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-        if(!tounmute){
-            color = 16711680;
-            title = `[${config.prefix}kick]`;
-            text = `Используйте ${config.prefix}kick @user`;
-            message.channel.send(infomessage(color, title, text));
-            return
-        }
-        member.kick()
-        .then(() => console.log(`Kicked ${member.displayName}`));
-        color = 16734464;
-        title = `[${config.prefix}kick]`;
-        text = `${member} кикнут с сервера!`;
-        message.channel.send(infomessage(color, title, text));
-=======
     if(commandName == "muted") {
         console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         client.commands.get('muted').execute(message, args);
@@ -887,232 +285,16 @@ client.on('message', message => {
     if(commandName == "kick"){
         console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         client.commands.get('kick').execute(message, args);
->>>>>>> pre-release 2.9
         return;
     }
 
     if(commandName == "ban"){
-<<<<<<< HEAD
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(perms['root'].indexOf(message.author.id) == -1){
-            color = 16711680;
-            title = `[${config.prefix}ban]`;
-            text = language.error1.replace('{0}', prefix);
-            message.channel.send(infomessage(color, title, text));
-            console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
-            return;
-        }
-        let member = message.mentions.members.first();
-        let tounmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-        if(!tounmute){
-            color = 16711680;
-            title = `[${config.prefix}ban]`;
-            text = `Используйте ${config.prefix}ban @user`;
-            message.channel.send(infomessage(color, title, text));
-            return
-        }
-        member.ban()
-        .then(() => console.log(`Banned ${member.displayName}`));
-        color = 16734464;
-        title = `[${config.prefix}ban]`;
-        text = `${member} забанен на сервере!\nЕго ID: ${member.id}`;
-        message.channel.send(infomessage(color, title, text));
-=======
         console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         client.commands.get('ban').execute(message, args);
->>>>>>> pre-release 2.9
         return;
     }
 
     if (commandName == "unban") {
-<<<<<<< HEAD
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(perms['root'].indexOf(message.author.id) == -1){
-            color = 16711680;
-            title = `[${config.prefix}unban]`;
-            text = language.error1.replace('{0}', config.prefix);
-            message.channel.send(infomessage(color, title, text));
-            console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
-            return;
-        }
-        const user = args[0];
-        if(!args[0]){
-            color = 16711680;
-            title = `[${config.prefix}unban]`;
-            text = `Используйте ${config.prefix}ban @user`;
-            message.channel.send(infomessage(color, title, text));
-            return
-        }
-        message.guild.unban(user);
-        console.log(`Unbanned ${user}`);
-        color = 16734464;
-        title = `[${config.prefix}unban]`;
-        text = `${user} разбанен на сервере!`;
-        message.channel.send(infomessage(color, title, text));
-        return;  
-    }
-    if(commandName == "rainbow"){
-        member = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(perms['root'].indexOf(message.author.id) == -1){
-            color = 16711680;
-            title = `[${config.prefix}rainbow]`;
-            text = language.error1.replace('{0}', config.prefix);
-            message.channel.send(infomessage(color, title, text));
-            console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
-            return;
-        }
-            if(!args[0]){
-                color = 16711680;
-                title = `[${config.prefix}rainbow]`;
-                text = `Вы не упомянули пользователя!`;
-                message.channel.send(infomessage(color, title, text));
-                return;
-            }else{
-                let role = client.guilds.get(config.serverid).roles.find('name', config.rainbowroles).id;
-                member.removeRole(role);
-                member.addRole(role);
-                color = 16729856;
-                title = `[${config.prefix}rainbow]`;
-                text = `Радужная роль была убрана или же выдана пользователю ${member}!`;
-                message.channel.send(infomessage(color, title, text));
-                return;
-            }
-        }
-    
-    if(commandName == "coin"){
-    	time = 5;
-    	message.delete(5000);      
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        var rand = Math.floor(Math.random() * (2 - 1 + 1)) + 0;
-        if(cooldown.has(message.author.id)) {
-            return message.reply(`жди ${time} секунд для повтора команды!`).then(msg => msg.delete(5000));
-        }
-            cooldown.add(message.author.id);
-            setTimeout(() => {
-            cooldown.delete(message.author.id)
-        }, time * 1000)
-        if(rand == "0"){
-            const embed = new Discord.RichEmbed()
-                .setColor(14286592)
-                .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
-                .setThumbnail("https://images-ext-1.discordapp.net/external/psw8bjb7MLk5ifrtsyYLtYf_UORozzkQrctGwklKc7U/https/i.imgur.com/ZyCwWuE.png")
-                .addField("Coin", "\nВы проиграли. Отнимаем у вас 50 опыта!")
-                message.channel.send(embed).then(msg => msg.delete(5000));
-            	lvls[message.author.id]=lvls[message.author.id]-50;
-            	if(lvls[message.author.id]<0) lvls[message.author.id]=0;
-        }
-        if(rand == '1'){
-            const embed = new Discord.RichEmbed()
-                .setColor(14286592)
-                .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
-                .setThumbnail("https://images-ext-1.discordapp.net/external/0Aqs6FQriCBitmkZqMNBhedGhVM-J8wDVPnHQhFhdgQ/https/i.imgur.com/9FsWNZk.png")
-                .addField("Coin", "\nВы выиграли. Начисляем вам 50 опыта!")
-            message.channel.send(embed).then(msg => msg.delete(5000));
-            lvls[message.author.id]+=50;
-        }
-        return
-    }
-
-    if(commandName == "report"){
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        let user = message.guild.member(message.mentions.users.first());
-        if(!user){
-            color = 16711680;
-            title = `[${config.prefix}report]`;
-            text = `Вы не упомянули пользователя и не написали причину !report @user [reason]`;
-            message.channel.send(infomessage(color, title, text));
-            return
-        }
-        var replace = /\[(.*?)\]/ism;
-        var reportuser = replace.exec(message.content);
-        if(!reportuser){
-            color = 16711680;
-            title = `[${config.prefix}report]`;
-            text = `Вы не написали причину !report @user [reason]`;
-            message.channel.send(infomessage(color, title, text));
-            return
-        }
-        channel = message.guild.channels.find('name', config.reportchannel);
-        const embed = new Discord.RichEmbed()
-            .setColor(13632027)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
-            .addField("Нарушитель", `<@${user.id}>`)
-            .addField("Канал", `${message.channel}`)
-            .addField("Отправитель", `<@${message.author.id}>`)
-            .addField("Текст репорта", `**${reportuser[1]}**\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
-            channel.send(embed);
-            message.reply(`ваша жалоба на пользователя отправлена! Ваше сообщение с командой ${config.prefix}report было удалено.`);
-            message.delete(message.author.id);
-        return;
-    }
-    if(commandName == "weather"){
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(!args[0]){
-            color = 16711680;
-            title = `[${config.prefix}weather]`;
-            text = `Укажите город! ${config.prefix}weather Город`;
-            message.channel.send(infomessage(color, title, text));
-            return
-        }
-        weather.find({search: args[0], degreeType: 'C'}, function(err, result) { //degreeType - тип градуса(С - цельсий, F - фаренгейт)
-        if(err) console.log(err);
-        if(!result[0]){
-            color = 16711680;
-            title = `[${config.prefix}weather]`;
-            text = `Город не был найден!`;
-            message.channel.send(infomessage(color, title, text));
-            return
-        }
-        // Переменные
-        var current = result[0].current;
-        var location = result[0].location;
-            
-        const weather = new Discord.RichEmbed()
-            .setDescription(`**${current.skytext}**`)
-            .setAuthor(`Погода в ${current.observationpoint}`)
-            .setThumbnail(current.imageUrl)
-            .setColor(16777215)
-            .addField('Температура',`${current.temperature} градусов`, true)
-            .addField('Ветер',current.winddisplay, true)
-            .addField('Влажность', `${current.humidity}%\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`, true)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg");
-            message.channel.send(weather);
-        });
-        return;
-    }
-
-    if(commandName == "admins"){
-        var date = new Date();         
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-    	color = 16777215;
-    	title = `[${config.prefix}admins]`;
-        text =  `**Список пользователей, которые добавлены в администраторы бота:**\n`;
-		perms['root'].forEach(function(item, i, arr) {
-  			text += (`\n<@${item}>`);
-		});
-		message.channel.send(infomessage(color, title, text));
-    	return;
-	}
-	if(commandName == "restart"){
-		console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-		if(perms['root'].indexOf(message.author.id) == -1){
-            color = 16711680;
-            title = `[${config.prefix}restart]`;
-            text = language.error1.replace('{0}', config.prefix);
-            message.channel.send(infomessage(color, title, text));
-            console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
-            return;
-        }
-	message.delete()
-            .then(message => client.destroy())
-            .then(() => client.login(config.token))
-            .then(() => console.log("Restarting the bot..."));
-        color = 16711680;
-    	title = `[${config.prefix}restart]`;
-    	text = `**Внимание!** Перезагрузка бота!`;
-    	message.channel.send(infomessage(color, title, text));
-=======
         console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         client.commands.get('unban').execute(message, args);
         return;  
@@ -1143,7 +325,6 @@ client.on('message', message => {
 	if(commandName == "restart"){
 		console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         client.commands.get('restart').execute(message);
->>>>>>> pre-release 2.9
         return;
     }
 
@@ -1211,64 +392,31 @@ client.on('message', message => {
     }
 
     if(commandName == 'say'){
-<<<<<<< HEAD
-        var date = new Date();
-        console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        message.delete();
-		if(perms['root'].indexOf(message.author.id) == -1){
-            color = 16711680;
-            title = `[${config.prefix}say]`;
-            text = language.error1.replace('{0}', config.prefix);
-            message.channel.send(infomessage(color, title, text));
-            console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
-            return;
-        }
-        if(!args[0]) return message.reply('напишите название канала, в который хотите сделать объявление.')
-        if(!args[1]) return message.reply('напишите текст объявления.');
-        channel = message.guild.channels.find('name', args[0]);
-        sayMessage = args.join(" ");
-        sayMessage = sayMessage.replace(args[0], '');
-        const embed = new Discord.RichEmbed()
-		    .setAuthor(`░▒▓▢Attention!▢▓▒░`)
-            .setColor(16711680)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
-            .setDescription(`${sayMessage}\nАвтор объявления: ${message.author}\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`);
-		channel.send(embed);
-=======
         console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         client.commands.get('say').execute(message, args);
->>>>>>> pre-release 2.9
         return;
     }
 
     if(commandName == 'sendlog'){
-<<<<<<< HEAD
-    	console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(perms['root'].indexOf(message.author.id) == -1){
-            color = 16711680;
-            title = `[${config.prefix}sendlog]`;
-            text = language.error1.replace('{0}', config.prefix);
-            message.channel.send(infomessage(color, title, text));
-            console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
-            return;
-        }
-        if(!args[0]) return message.reply(`выберете дату. Она должна быть в формате день.месяц.год. Например ${Day}.${Month}.${Year}`);
-        message.reply('лог отправлен вам в личные сообщения.');
-        message.author.send(`Лог чата выбранной вами даты:`, {
-            files: [
-                `log/${args[0]}.txt`
-            ]
-        })
-=======
     	console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         client.commands.get('sendlog').execute(message, args);
->>>>>>> pre-release 2.9
         return
+    }
+
+    if(commandName == 'stop'){
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('stop').execute(message, client);
+        return
+    }
+
+    if(commandName == 'radio'){
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('radio').execute(message, client, args);
     }
 
 	if(commandName == 'play'){
         console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(config.lvlsonoff == 'on'){if(lvls[message.author.id]<config.fourlvl) return message.reply("у вас слишком маленький лвл!");}
+        
         let suffix = message.content.split(" ").slice(1).join(" ");
         if (!suffix) return message.channel.send(`Пожалуйста используйте ${config.prefix}play название трека/ссылка`);
         if (!client.voiceConnections.get(message.author.id)) {
@@ -1294,7 +442,7 @@ client.on('message', message => {
     }
     if(commandName == "skip"){       
         console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(config.lvlsonoff == 'on'){if(lvls[message.author.id]<config.fourlvl) return message.reply("у вас слишком маленький лвл!");}
+        
         const { voiceChannel } = message.member;
         if (!voiceChannel){
             color = 16711680;
@@ -1316,7 +464,7 @@ client.on('message', message => {
     }
     if(commandName == "pause"){       
         console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(config.lvlsonoff == 'on'){if(lvls[message.author.id]<config.fourlvl) return message.reply("у вас слишком маленький лвл!");}
+        
         const { voiceChannel } = message.member;
         if (!voiceChannel){
             color = 16711680;
@@ -1341,7 +489,7 @@ client.on('message', message => {
     }
     if(commandName == "resume"){    
         console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(config.lvlsonoff == 'on'){if(lvls[message.author.id]<config.fourlvl) return message.reply("у вас слишком маленький лвл!");}
+        
         const { voiceChannel } = message.member;
         if (!voiceChannel){
             color = 16711680;
@@ -1360,7 +508,7 @@ client.on('message', message => {
     }
     if(commandName == "volume"){   
         console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(config.lvlsonoff == 'on'){if(lvls[message.author.id]<config.fourlvl) return message.reply("у вас слишком маленький лвл!");}
+        
         const { voiceChannel } = message.member;
         if (!voiceChannel){
             color = 16711680;
@@ -1404,14 +552,14 @@ client.on('message', message => {
         const embed = new Discord.RichEmbed()
             .setColor(16734464)
             .setAuthor(title)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+            .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`${text}\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         message.channel.send(embed);
         return
     }
     if(commandName == "remove") {
         console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
-        if(config.lvlsonoff == 'on'){if(lvls[message.author.id]<config.fourlvl) return message.reply("у вас слишком маленький лвл!");}
+        
         const { voiceChannel } = message.member;
         if (!voiceChannel){
             color = 16711680;
@@ -1435,14 +583,6 @@ client.on('message', message => {
             return;
         }
     }
-<<<<<<< HEAD
-    console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot! This command off in bot or undefined`);
-    color = 16711680;
-    title = `[Error]`;
-    text = `Эта комнанда не найдена! Напишите ${config.prefix}info чтобы узнать список команд`;
-    message.channel.send(infomessage(color, title, text));
-=======
->>>>>>> pre-release 2.9
 });
 
 function removeMusic(msg, args) {
@@ -1454,32 +594,10 @@ function removeMusic(msg, args) {
     return true;
 }
 
-<<<<<<< HEAD
-async function purge(message, args) {
-    if(!args[0]){
-        color = 16711680;
-        title = `[${config.prefix}clean]`;
-        text = `Введи число сообщений, которое хочешь удалить (0-100) ${config.prefix}clear 100`;
-        message.channel.send(infomessage(color, title, text));
-        return
-    }
-    const fetched = await message.channel.fetchMessages({limit: args[0]});
-    var messages = [];
-    fetched.forEach(function(element, index, array) {
-        if(element.author.id == client.user.id || element.content.startsWith(config.prefix)) messages.push(element);
-    });
-    messages.forEach(function(element, index, array) {
-        message.channel.fetchMessage(element.id)
-            .then(message => message.delete())
-    });
-}
-
-=======
->>>>>>> pre-release 2.9
 function infomessage(color, title, text) {
         const embed = new Discord.RichEmbed()
             .setColor(color)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+            .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .addField(title, `${text}\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         return embed;
 
@@ -1493,7 +611,7 @@ function Mute(message, args, auto) {
     if(!tomute){
         const embed = new Discord.RichEmbed()
             .setColor(16734464)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+            .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .addField(`[${config.prefix}mute]`, `Используйте ${config.prefix}mute @user 1s/m/h/d!\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         message.channel.send(embed);
         return
@@ -1502,7 +620,7 @@ function Mute(message, args, auto) {
     if(!mutetime){
         const embed = new Discord.RichEmbed()
             .setColor(16734464)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")        
+            .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")        
             .addField("[!mute]", `Вы не указали время!\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
             message.channel.send(embed);
         return
@@ -1524,7 +642,7 @@ function Mute(message, args, auto) {
         let user = client.guilds.get(config.serverid).members.get(tomute.id).user;
         const embed = new Discord.RichEmbed()
             .setColor(13632027)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+            .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .addField("User", `<@${tomute.id}>`, true)
             .addField("Moderator", `<@${mod.id}>`, true)
             .addField("Reason", `${reason}`, true)
@@ -1562,8 +680,6 @@ function checkForMatWords(message) {
         }
     }
 }
-<<<<<<< HEAD
-=======
 //Переносить в js с передачей client.
 function minusMutedList() {
     for (var key in mutedlist) {
@@ -1577,7 +693,6 @@ function minusMutedList() {
 }
 
 setInterval(minusMutedList, 1);
->>>>>>> pre-release 2.9
 
 function UnMute(channel, id) {
     if(!IsAuth) return false;
@@ -1588,10 +703,7 @@ function UnMute(channel, id) {
     } catch(err) {
         return false;
     }
-<<<<<<< HEAD
-=======
     if(!infobanlist[member.id]) !infobanlist[member.id] 
->>>>>>> pre-release 2.9
     if(infobanlist[member.id] >= config.warningcount){
         member.ban();
         color = 16734464;
@@ -1610,43 +722,10 @@ function UnMute(channel, id) {
     return true;
 }
 
-<<<<<<< HEAD
-function minusMutedList() {
-    for (var key in mutedlist) {
-        if(mutedlist[key] <= 1) { 
-            mutedlist[key] = mutedlist[key] - 1;
-            if(UnMute(config.serverid, key)) delete mutedlist[key];
-        } else {
-            mutedlist[key] = mutedlist[key] - 1;
-        }
-    }
-}
-
-setInterval(minusMutedList, 1);
-
-=======
->>>>>>> pre-release 2.9
 function saveMutedList() {
     fs.writeFile('muted.json', JSON.stringify(mutedlist), function() {/*console.log(whitelist);*/});
 }
 setInterval(saveMutedList, 2000);
-<<<<<<< HEAD
-function savelvl() {
-    fs.writeFile('lvls.json', JSON.stringify(lvls), function() {/*console.log(whitelist);*/});
-}
-setInterval(savelvl, 1000);
-
-function saveBadWordsList() {
-    fs.writeFile('words.json', JSON.stringify(badwordslist), function() {/*console.log(badwordslist);*/});
-}
-setInterval(saveBadWordsList, 1000);
-
-function saveinfobanlist() {
-    fs.writeFile('infoban.json', JSON.stringify(infobanlist), function() {/*console.log(badwordslist);*/});
-}
-setInterval(saveinfobanlist, 1000);
-=======
->>>>>>> pre-release 2.9
 
 function onedate() {
     Data = new Date();
@@ -1738,28 +817,6 @@ function playSong(msg, queue, song) {
 
 //logs
 client.on('guildMemberRemove', member => {
-<<<<<<< HEAD
-    if(config.channellogonoff == 'on'){
-        var channel = client.guilds.get(config.serverid).channels.find('name', config.channellog);
-        const embed = new Discord.RichEmbed()
-            .setAuthor(`${member.user.username}#${member.user.discriminator}`, member.user.avatarURL)
-            .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
-            .setDescription(`Пользователь вышел с сервера.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
-        channel.send(embed);
-    }
-})
-client.on('channelCreate', channel => {
-    if(config.channellogonoff == 'on'){
-        var channel = client.guilds.get(config.serverid).channels.find('name', config.channellog);
-        const embed = new Discord.RichEmbed()
-            .setAuthor(`Создание канала ${channel.name}`)
-            .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
-            .setDescription(`Был создан канал **${channel.name}**. Его тип: ${channel.type}.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
-        channel.send(embed);
-    }
-=======
     client.commands.get('leavemessage').execute(client, member);
 })
 client.on('channelCreate', channel => {
@@ -1768,12 +825,11 @@ client.on('channelCreate', channel => {
     //     const embed = new Discord.RichEmbed()
     //         .setAuthor(`Создание канала ${channel.name}`)
     //         .setColor(16777215)
-    //         .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+    //         .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
     //         .setDescription(`Был создан канал **${channel.name}**. Его тип: ${channel.type}.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
     //     channel.send(embed);
     // }
     client.commands.get('createchannel').execute(client, channel);
->>>>>>> pre-release 2.9
 })
 client.on('channelDelete', channel =>{
     if(config.channellogonoff == 'on'){
@@ -1781,7 +837,7 @@ client.on('channelDelete', channel =>{
         const embed = new Discord.RichEmbed()
             .setAuthor(`Удаление канала ${channel.name}`)
             .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+            .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`Был удален канал **${channel.name}**. Его тип: ${channel.type}.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel1.send(embed);
     }
@@ -1792,7 +848,7 @@ client.on('channelUpdate', channel => {
         const embed = new Discord.RichEmbed()
             .setAuthor(`Обновление канала ${channel.name}`)
             .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+            .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`Был обновлен калан **${channel.name}**. Его тип: ${channel.type}.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel2.send(embed);
     }
@@ -1804,7 +860,7 @@ client.on('roleUpdate', role => {
             const embed = new Discord.RichEmbed()
                 .setAuthor(`Обновление роли ${role.name}`)
                 .setColor(16777215)
-                .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+                .setFooter("Coder - cheesega. ", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
                 .setDescription(`Была обновлена роль **${role.name}**.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
             channel.send(embed);
         }
@@ -1816,7 +872,7 @@ client.on('roleDelete', role => {
         const embed = new Discord.RichEmbed()
             .setAuthor(`Удаление роли ${role.name}`)
             .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+            .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`Была удалена роль **${role.name}**.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel.send(embed);
     }
@@ -1827,7 +883,7 @@ client.on('guildBanAdd', (guild,user) => {
         const embed = new Discord.RichEmbed()
             .setAuthor(`Новый бан`)
             .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+            .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`**${user.username}#${user.discriminator}** был забанен на сервере.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel.send(embed);
     }
@@ -1838,7 +894,7 @@ client.on('guildBanRemove', (guild,user) => {
         const embed = new Discord.RichEmbed()
             .setAuthor(`Разбан`)
             .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+            .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`**${user.username}#${user.discriminator}** был разбанен на сервере.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel.send(embed);
     }
