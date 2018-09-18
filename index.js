@@ -1800,14 +1800,6 @@ client.on('channelUpdate', channel => {
 client.on('roleUpdate', role => {
     if(config.channellogonoff == 'on'){
         var channel = client.guilds.get(config.serverid).channels.find('name', config.channellog);
-<<<<<<< HEAD
-        const embed = new Discord.RichEmbed()
-            .setAuthor(`Обновление роли ${role.name}`)
-            .setColor(16777215)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
-            .setDescription(`Была обновлена роль **${role.name}**.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
-        channel.send(embed);
-=======
         if(role.name != config.rainbowroles){
             const embed = new Discord.RichEmbed()
                 .setAuthor(`Обновление роли ${role.name}`)
@@ -1816,7 +1808,6 @@ client.on('roleUpdate', role => {
                 .setDescription(`Была обновлена роль **${role.name}**.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
             channel.send(embed);
         }
->>>>>>> pre-release 2.9
     }
 })
 client.on('roleDelete', role => {
