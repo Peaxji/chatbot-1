@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var config = {
     prefix: "!",
     token: "",
@@ -49,3 +50,56 @@ var config = {
     channellogonoff: 'on'
 }
 module.exports = config;
+=======
+var config = {
+    prefix: "!",
+    token: "NDQ0ODMyMzE4MTU1MjU5OTA0.Dmmsxg.XjOUUxHONZ6d_8kgNhGLV3XPeWA",
+    serverid: "444807879258669056",
+    rainbowroles: "rainbow",
+    rainbowrolesonoff:"on",
+    muterol: "Mute",
+    checkwordsonoff: "off",
+    reportchannel: "reports",
+    generalchatid: "453893699005448194",
+    defaultrole: "NoName какой-то",
+    defaultroleonoff: "off",
+    chatlog: "off",
+    welcome: "**привет!**\nОбязательно напиши мне команду !info, а так же не забудь прочитать чаты **#faq и #regulations**!",
+    welcomeonoff:"off",
+    warningcount: "3",
+    warningcountonoff:"on",
+    automutetime: "6h",
+    yt_api_key: "AIzaSyDkFneQ0Zt8r6nvvjnWuXEZpjcBWUR5h3k",
+    lvlsonoff:"on",
+    lvlplus:5,
+    winnersandover:105,
+    zerolvlname:"Новенький",
+    onelvl:500,
+    onelvlname:"Участник",
+    twolvl:1200,
+    twolvlname:"А ты давно тут сидишь?",
+    triolvl:2500,
+    triolvlname:"Ты многое знаешь",
+    fourlvl:3000,
+    fourlvlname:"Любитель общения",
+    fivelvl:4500,
+    fivelvlname:"Читы?",
+    sixlvl:6000,
+    sixlvlname:"Мут? Не, не слышал",
+    sevenlvl:7500,
+    sevenlvlname:"Радуга? Где моя радуга?!",
+    eightlvl:9000,
+    eightlvlname:"Я слишком стар для этого...",
+    ninelvl:10500,
+    ninelvlname:"Что ты такое?!",
+    tenlvl:12000,
+    tenlvlname:"Боженька(нет)",
+    giverainbowlvlten:"off",
+    messagesonoff:'on',
+    messages: ['Сообщение 1', 'Сообщение 2', 'Сообщение 3'],
+    messagesinterval: '5h',
+    channellog: 'test',
+    channellogonoff: 'on'
+}
+module.exports = config;
+>>>>>>> pre-release 2.9

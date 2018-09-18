@@ -21,12 +21,26 @@ const opts = {
   key: config.yt_api_key
 };
 const client = new Discord.Client();
+<<<<<<< HEAD
 var lvls = JSON.parse(fs.readFileSync('lvls.json'));
+=======
+client.commands = new Discord.Collection();
+
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.name, command);
+}
+>>>>>>> pre-release 2.9
 var mutedlist = JSON.parse(fs.readFileSync('muted.json'));
 var infobanlist = JSON.parse(fs.readFileSync('infoban.json'));
 var badwordslist = JSON.parse(fs.readFileSync('words.json'));
 var perms = require('./permissions.js');
+<<<<<<< HEAD
 var weather = require('weather-js');
+=======
+>>>>>>> pre-release 2.9
 var IsAuth = false;
 /* RAINBOW START */
 var interval;
@@ -35,9 +49,15 @@ const size = 40;
 const rainbow = new Array(size);
 
 for (var i=0; i<size; i++) {
+<<<<<<< HEAD
   var red   = sin_to_hex(i, 0 * Math.PI * 2/3); // 0   deg
   var blue  = sin_to_hex(i, 1 * Math.PI * 2/3); // 120 deg
   var green = sin_to_hex(i, 2 * Math.PI * 2/3); // 240 deg
+=======
+  var red   = sin_to_hex(i, 0 * Math.PI * 2/3);
+  var blue  = sin_to_hex(i, 1 * Math.PI * 2/3);
+  var green = sin_to_hex(i, 2 * Math.PI * 2/3);
+>>>>>>> pre-release 2.9
 
   rainbow[i] = '#'+ red + green + blue;
 }
@@ -72,8 +92,13 @@ client.login(config.token).catch(err => {
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!\nHello! I am moderation bot :) 
 My creator — cheesega
+<<<<<<< HEAD
 Version: 2.8
 github — https://github.com/cheesegaproj
+=======
+Version: 2.9
+github — https://github.com/cheesegaproj/chatbot
+>>>>>>> pre-release 2.9
 Discord — cheesega#9496
 Hmm... You are ready? Go!`);
     IsAuth = true;
@@ -148,8 +173,12 @@ client.on('message', message => {
 			});
         }
         if(config.lvlsonoff == 'on'){
+<<<<<<< HEAD
             if(!lvls[message.author.id]) lvls[message.author.id] = 0;
             lvls[message.author.id]+=config.lvlplus;
+=======
+            client.commands.get('lvlup').execute(message);
+>>>>>>> pre-release 2.9
             if(config.giverainbowlvlten == 'on'){
                 if(lvls[message.author.id]>=config.tenlvl){
                     member = message.guild.member(message.author);
@@ -162,6 +191,7 @@ client.on('message', message => {
     };
     const args = message.content.slice(config.prefix.length).split(/ +/);
     const commandName = args.shift().toLowerCase();
+<<<<<<< HEAD
     if(commandName == "info") {
         if(!args.length) {
            text = `${language.oneinfo} **${config.prefix}info 1**):\n**1. ${config.prefix}mute\n2. ${config.prefix}addmat\n3. ${config.prefix}unmute\n4. ${config.prefix}muted\n5. ${config.prefix}github\n6. ${config.prefix}kick\n7. ${config.prefix}ban\n8. ${config.prefix}unban\n9. ${config.prefix}rainbow\n10. ${config.prefix}coin\n11. ${config.prefix}exit\n12. ${config.prefix}report\n13.${config.prefix}warnings\n14. ${config.prefix}rwarnings\n15. ${config.prefix}weather**`;
@@ -504,6 +534,33 @@ client.on('message', message => {
     }
     if(commandName == "mute"){
         console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+=======
+
+    if(commandName == "info") {
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('info').execute(message, args);
+        return;
+    }
+
+    if(commandName == "exit") {
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('exit').execute(message, args);
+        return;
+    }
+
+    if(commandName == "clean"){
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('clean').execute(message, args);
+    return;
+};
+    if(commandName == "clear") {
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('clear').execute(message, args, client);
+        return;
+    }
+    if(commandName == "mute"){
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+>>>>>>> pre-release 2.9
         if(perms['root'].indexOf(message.author.id) == -1){
             color = 16711680;
             title = `[${prefix}mute]`;
@@ -517,6 +574,7 @@ client.on('message', message => {
     }
 
     if(commandName == "lvl"){
+<<<<<<< HEAD
         var text = "";
         let member = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         message.delete(5000);
@@ -595,10 +653,21 @@ client.on('message', message => {
         title = `[${config.prefix}setlvl]`;
         text = `Вы установили у пользователя ${member} количество очков: ${setvalue}!`;
         message.channel.send(infomessage(color, title, text));
+=======
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('lvl').execute(message, args);
+        return;
+    }
+
+    if(commandName == "setlvl"){
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('setlvl').execute(message, args);
+>>>>>>> pre-release 2.9
         return
     }
 
     if(commandName == "rwarnings"){
+<<<<<<< HEAD
         console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         if(perms['owner'].indexOf(message.author.id) == -1){
             color = 16711680;
@@ -622,10 +691,15 @@ client.on('message', message => {
         title = `[${config.prefix}rwarnings]`;
         text = `Все предупреждения у пользователя ${member} удалены!`;
         message.channel.send(infomessage(color, title, text));
+=======
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('rwarnings').execute(message, args);
+>>>>>>> pre-release 2.9
         return;
     }
 
     if(commandName == "warnings"){
+<<<<<<< HEAD
         console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         let member = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if(!member){
@@ -693,6 +767,20 @@ client.on('message', message => {
     }
     if(commandName == "unmute"){
         console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+=======
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('warnings').execute(message, args);
+        return;
+    }
+
+    if(commandName == "addword") {
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('addword').execute(message, args);
+        return;
+    }
+    if(commandName == "unmute"){
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+>>>>>>> pre-release 2.9
         if(perms['root'].indexOf(message.author.id) == -1){
             color = 16711680;
             title = `[${config.prefix}unmute]`;
@@ -729,6 +817,7 @@ client.on('message', message => {
         }
         return;
     }
+<<<<<<< HEAD
     
     if(commandName == "muted") {
         console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
@@ -783,10 +872,27 @@ client.on('message', message => {
         title = `[${config.prefix}kick]`;
         text = `${member} кикнут с сервера!`;
         message.channel.send(infomessage(color, title, text));
+=======
+    if(commandName == "muted") {
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('muted').execute(message, args);
+        return;
+    }
+    if(commandName == "github"){
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('github').execute(message, args);
+        return;
+    }
+
+    if(commandName == "kick"){
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('kick').execute(message, args);
+>>>>>>> pre-release 2.9
         return;
     }
 
     if(commandName == "ban"){
+<<<<<<< HEAD
         console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         if(perms['root'].indexOf(message.author.id) == -1){
             color = 16711680;
@@ -811,10 +917,15 @@ client.on('message', message => {
         title = `[${config.prefix}ban]`;
         text = `${member} забанен на сервере!\nЕго ID: ${member.id}`;
         message.channel.send(infomessage(color, title, text));
+=======
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('ban').execute(message, args);
+>>>>>>> pre-release 2.9
         return;
     }
 
     if (commandName == "unban") {
+<<<<<<< HEAD
         console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         if(perms['root'].indexOf(message.author.id) == -1){
             color = 16711680;
@@ -1001,6 +1112,38 @@ client.on('message', message => {
     	title = `[${config.prefix}restart]`;
     	text = `**Внимание!** Перезагрузка бота!`;
     	message.channel.send(infomessage(color, title, text));
+=======
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('unban').execute(message, args);
+        return;  
+    }
+    if(commandName == "rainbow"){
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('rainbow').execute(message, args, client);
+        return;
+        }
+    
+    if(commandName == "coin"){
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('coin').execute(message, args);
+        return;
+    }
+
+    if(commandName == "report"){
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('report').execute(message, args);
+        return;
+    }
+
+    if(commandName == "admins"){    
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('admins').execute(message);
+    	return;
+	}
+	if(commandName == "restart"){
+		console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('restart').execute(message);
+>>>>>>> pre-release 2.9
         return;
     }
 
@@ -1068,6 +1211,7 @@ client.on('message', message => {
     }
 
     if(commandName == 'say'){
+<<<<<<< HEAD
         var date = new Date();
         console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         message.delete();
@@ -1090,10 +1234,15 @@ client.on('message', message => {
             .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`${sayMessage}\nАвтор объявления: ${message.author}\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`);
 		channel.send(embed);
+=======
+        console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('say').execute(message, args);
+>>>>>>> pre-release 2.9
         return;
     }
 
     if(commandName == 'sendlog'){
+<<<<<<< HEAD
     	console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
         if(perms['root'].indexOf(message.author.id) == -1){
             color = 16711680;
@@ -1110,6 +1259,10 @@ client.on('message', message => {
                 `log/${args[0]}.txt`
             ]
         })
+=======
+    	console.log(`${message.author.username}(${message.author.id}) send command ${commandName} for bot!`);
+        client.commands.get('sendlog').execute(message, args);
+>>>>>>> pre-release 2.9
         return
     }
 
@@ -1282,11 +1435,14 @@ client.on('message', message => {
             return;
         }
     }
+<<<<<<< HEAD
     console.log(`[date: ${Year}-${Month}-${Day}|${Hour}:${Minutes}] — ${message.author.username}(${message.author.id}) send command ${commandName} for bot! This command off in bot or undefined`);
     color = 16711680;
     title = `[Error]`;
     text = `Эта комнанда не найдена! Напишите ${config.prefix}info чтобы узнать список команд`;
     message.channel.send(infomessage(color, title, text));
+=======
+>>>>>>> pre-release 2.9
 });
 
 function removeMusic(msg, args) {
@@ -1298,6 +1454,7 @@ function removeMusic(msg, args) {
     return true;
 }
 
+<<<<<<< HEAD
 async function purge(message, args) {
     if(!args[0]){
         color = 16711680;
@@ -1317,6 +1474,8 @@ async function purge(message, args) {
     });
 }
 
+=======
+>>>>>>> pre-release 2.9
 function infomessage(color, title, text) {
         const embed = new Discord.RichEmbed()
             .setColor(color)
@@ -1403,6 +1562,22 @@ function checkForMatWords(message) {
         }
     }
 }
+<<<<<<< HEAD
+=======
+//Переносить в js с передачей client.
+function minusMutedList() {
+    for (var key in mutedlist) {
+        if(mutedlist[key] <= 1) { 
+            mutedlist[key] = mutedlist[key] - 1;
+            if(UnMute(config.serverid, key)) delete mutedlist[key];
+        } else {
+            mutedlist[key] = mutedlist[key] - 1;
+        }
+    }
+}
+
+setInterval(minusMutedList, 1);
+>>>>>>> pre-release 2.9
 
 function UnMute(channel, id) {
     if(!IsAuth) return false;
@@ -1413,6 +1588,10 @@ function UnMute(channel, id) {
     } catch(err) {
         return false;
     }
+<<<<<<< HEAD
+=======
+    if(!infobanlist[member.id]) !infobanlist[member.id] 
+>>>>>>> pre-release 2.9
     if(infobanlist[member.id] >= config.warningcount){
         member.ban();
         color = 16734464;
@@ -1431,6 +1610,7 @@ function UnMute(channel, id) {
     return true;
 }
 
+<<<<<<< HEAD
 function minusMutedList() {
     for (var key in mutedlist) {
         if(mutedlist[key] <= 1) { 
@@ -1444,10 +1624,13 @@ function minusMutedList() {
 
 setInterval(minusMutedList, 1);
 
+=======
+>>>>>>> pre-release 2.9
 function saveMutedList() {
     fs.writeFile('muted.json', JSON.stringify(mutedlist), function() {/*console.log(whitelist);*/});
 }
 setInterval(saveMutedList, 2000);
+<<<<<<< HEAD
 function savelvl() {
     fs.writeFile('lvls.json', JSON.stringify(lvls), function() {/*console.log(whitelist);*/});
 }
@@ -1462,6 +1645,8 @@ function saveinfobanlist() {
     fs.writeFile('infoban.json', JSON.stringify(infobanlist), function() {/*console.log(badwordslist);*/});
 }
 setInterval(saveinfobanlist, 1000);
+=======
+>>>>>>> pre-release 2.9
 
 function onedate() {
     Data = new Date();
@@ -1553,6 +1738,7 @@ function playSong(msg, queue, song) {
 
 //logs
 client.on('guildMemberRemove', member => {
+<<<<<<< HEAD
     if(config.channellogonoff == 'on'){
         var channel = client.guilds.get(config.serverid).channels.find('name', config.channellog);
         const embed = new Discord.RichEmbed()
@@ -1573,6 +1759,21 @@ client.on('channelCreate', channel => {
             .setDescription(`Был создан канал **${channel.name}**. Его тип: ${channel.type}.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel.send(embed);
     }
+=======
+    client.commands.get('leavemessage').execute(client, member);
+})
+client.on('channelCreate', channel => {
+    // if(config.channellogonoff == 'on'){
+    //     var channel = client.guilds.get(config.serverid).channels.find('name', config.channellog);
+    //     const embed = new Discord.RichEmbed()
+    //         .setAuthor(`Создание канала ${channel.name}`)
+    //         .setColor(16777215)
+    //         .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+    //         .setDescription(`Был создан канал **${channel.name}**. Его тип: ${channel.type}.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
+    //     channel.send(embed);
+    // }
+    client.commands.get('createchannel').execute(client, channel);
+>>>>>>> pre-release 2.9
 })
 client.on('channelDelete', channel =>{
     if(config.channellogonoff == 'on'){
@@ -1599,12 +1800,23 @@ client.on('channelUpdate', channel => {
 client.on('roleUpdate', role => {
     if(config.channellogonoff == 'on'){
         var channel = client.guilds.get(config.serverid).channels.find('name', config.channellog);
+<<<<<<< HEAD
         const embed = new Discord.RichEmbed()
             .setAuthor(`Обновление роли ${role.name}`)
             .setColor(16777215)
             .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`Была обновлена роль **${role.name}**.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         channel.send(embed);
+=======
+        if(role.name != config.rainbowroles){
+            const embed = new Discord.RichEmbed()
+                .setAuthor(`Обновление роли ${role.name}`)
+                .setColor(16777215)
+                .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+                .setDescription(`Была обновлена роль **${role.name}**.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
+            channel.send(embed);
+        }
+>>>>>>> pre-release 2.9
     }
 })
 client.on('roleDelete', role => {
