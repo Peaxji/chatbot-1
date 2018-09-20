@@ -8,7 +8,7 @@ module.exports = {
             const embed = new Discord.RichEmbed()
                 .setAuthor(`${member.user.username}#${member.user.discriminator}`, member.user.avatarURL)
                 .setColor(16777215)
-                .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+                .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
                 .setDescription(`Пользователь вышел с сервера.\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
             channel.send(embed);
         }

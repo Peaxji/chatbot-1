@@ -9,7 +9,7 @@ module.exports = {
                const embed = new Discord.RichEmbed()
                 .setAuthor(`[${config.prefix}info]`)
                 .setColor(16777215)
-                .setFooter("Coder - cheesega. Version: 2.9", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+                .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
                 .setDescription(`${text}\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
                message.channel.send(embed)
                 .then(function (msg) {
@@ -291,7 +291,7 @@ module.exports = {
 function infomessage(color, title, text) {
     const embed = new Discord.RichEmbed()
         .setColor(color)
-        .setFooter("Coder - cheesega. Version: 2.9", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+        .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
         .addField(title, `${text}\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
     return embed;
 }   

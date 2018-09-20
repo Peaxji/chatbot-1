@@ -15,7 +15,7 @@ module.exports = {
             const embed = new Discord.RichEmbed()
                 .setColor(5504768)
                 .setAuthor(`[${config.prefix}muted]`)
-                .setFooter("Coder - cheesega. Version: 2.9", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+                .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
                 .setDescription(`Пользователей в муте нет!\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
             message.channel.send(embed);
         } else {
@@ -23,7 +23,7 @@ module.exports = {
             const embed = new Discord.RichEmbed()
                 .setColor(5504768)
                 .setAuthor(`[${config.prefix}muted]`)
-                .setFooter("Coder - cheesega. Version: 2.9", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+                .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
                 .setDescription(`${text}\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
             message.channel.send(embed);
         }

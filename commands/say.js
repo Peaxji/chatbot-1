@@ -20,9 +20,9 @@ module.exports = {
         sayMessage = args.join(" ");
         sayMessage = sayMessage.replace(args[0], '');
         const embed = new Discord.RichEmbed()
-		    .setAuthor(`░▒▓▢Attention!▢▓▒░`)
+		    .setAuthor(`▢Attention!▢`)
             .setColor(16711680)
-            .setFooter("Coder - cheesega. Version: 2.9", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+            .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .setDescription(`${sayMessage}\nАвтор объявления: ${message.author}\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`);
 		channel.send(embed);
     }

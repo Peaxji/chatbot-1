@@ -17,7 +17,7 @@ module.exports = {
     		const embed = new Discord.RichEmbed()
 	            .setColor('#c7fcec')
 	            .setAuthor('radio')
-	            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+	            .setFooter("Coder - cheesega. ", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
 	            .setDescription(`Список радио:\n1. Rock\n2. Trap\n3. Pop\n4. EDM\n5. Drum'n'Bass\nПишите ${config.prefix}radio цифра\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         	message.channel.send(embed).then(msg => msg.delete(15000));
     		return;
@@ -30,7 +30,7 @@ module.exports = {
     	const embed = new Discord.RichEmbed()
 	            .setColor('#c7fcec')
 	            .setAuthor('radio')
-	            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+	            .setFooter("Coder - cheesega. ", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
 	            .setDescription(`Включена станция **Rock**!\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         	message.channel.send(embed).then(msg => msg.delete(15000));
     	return;
@@ -43,7 +43,7 @@ module.exports = {
     	const embed = new Discord.RichEmbed()
 	            .setColor('#c7fcec')
 	            .setAuthor('radio')
-	            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+	            .setFooter("Coder - cheesega. ", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
 	            .setDescription(`Включена станция **Trap**!\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         	message.channel.send(embed).then(msg => msg.delete(15000));
     	return;
@@ -56,7 +56,7 @@ module.exports = {
     	const embed = new Discord.RichEmbed()
 	            .setColor('#c7fcec')
 	            .setAuthor('radio')
-	            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+	            .setFooter("Coder - cheesega. ", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
 	            .setDescription(`Включена станция **Pop**!\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         	message.channel.send(embed).then(msg => msg.delete(15000));
     	return;
@@ -69,7 +69,7 @@ module.exports = {
     	const embed = new Discord.RichEmbed()
 	            .setColor('#c7fcec')
 	            .setAuthor('radio')
-	            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+	            .setFooter("Coder - cheesega. ", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
 	            .setDescription(`Включена станция **EDM**!\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         	message.channel.send(embed).then(msg => msg.delete(15000));
     	return;
@@ -82,7 +82,7 @@ module.exports = {
     	const embed = new Discord.RichEmbed()
 	            .setColor('#c7fcec')
 	            .setAuthor('radio')
-	            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+	            .setFooter("Coder - cheesega. ", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
 	            .setDescription(`Включена станция **Drum'n'bass**!\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         	message.channel.send(embed).then(msg => msg.delete(15000));
     	return;

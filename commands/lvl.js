@@ -25,7 +25,7 @@ module.exports = {
             const embed = new Discord.RichEmbed()
             .setColor('0080FF')
             .setAuthor(`[${config.prefix}lvl]`)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+            .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .addField("Очки", lvls[message.author.id], true)
             .addField("Звание", text, true)
             message.channel.send(embed).then(msg => msg.delete(5000));
@@ -47,7 +47,7 @@ module.exports = {
             const embed = new Discord.RichEmbed()
             .setColor('0080FF')
             .setAuthor(`[${config.prefix}lvl]`)
-            .setFooter("Coder - cheesega. Version: 2.8", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
+            .setFooter("Coder - cheesega. ", "https://media.discordapp.net/attachments/275709588496580608/485043932523134976/2.jpg")
             .addField("Очки пользователя", lvls[member.id], true)
             .addField("Звание пользователя", text, true)
             message.channel.send(embed).then(msg => msg.delete(5000));

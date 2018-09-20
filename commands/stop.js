@@ -19,7 +19,7 @@ module.exports = {
     	const embed = new Discord.RichEmbed()
 	            .setColor('#c7fcec')
 	            .setAuthor('radio')
-	            .setFooter("Coder - cheesega. Version: 2.8", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
+	            .setFooter("Coder - cheesega. ", "https://cdn.discordapp.com/avatars/247102468331274240/b1a24fab7dfdad1ce8032b19c22940c5.png")
 	            .setDescription(`Музыка выключена!\n\n[Сервер поддержки](https://discord.gg/jwnPHdA)`)
         	message.channel.send(embed).then(msg => msg.delete(15000));
     	return;
