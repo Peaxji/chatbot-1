@@ -1,6 +1,6 @@
 var config = {
     prefix: "!",
-    token: "NDQ0ODMyMzE4MTU1MjU5OTA0.Dmmsxg.XjOUUxHONZ6d_8kgNhGLV3XPeWA",
+    token: "",
     serverid: "444807879258669056",
     rainbowroles: "rainbow",
     rainbowrolesonoff:"on",
