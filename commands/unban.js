@@ -1,5 +1,5 @@
 var perms = require('../permissions.js');
-const config = require('../config.js');
+const cnf = require('../config.js');
 const language = require('../language.json');
 const Discord = require('discord.js');
 module.exports = {
@@ -7,8 +7,8 @@ module.exports = {
     execute(message, args) {
         if(perms['root'].indexOf(message.author.id) == -1){
             color = 16711680;
-            title = `[${config.prefix}unban]`;
-            text = language.error1.replace('{0}', config.prefix);
+            title = `[${cnf.prefix}unban]`;
+            text = language.error1.replace('{0}', cnf.prefix);
             message.channel.send(infomessage(color, title, text));
             console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
             return;
@@ -16,15 +16,15 @@ module.exports = {
         const user = args[0];
         if(!args[0]){
             color = 16711680;
-            title = `[${config.prefix}unban]`;
-            text = `Используйте ${config.prefix}ban @user`;
+            title = `[${cnf.prefix}unban]`;
+            text = `Используйте ${cnf.prefix}ban @user`;
             message.channel.send(infomessage(color, title, text));
             return
         }
         message.guild.unban(user);
         console.log(`Unbanned ${user}`);
         color = 16734464;
-        title = `[${config.prefix}unban]`;
+        title = `[${cnf.prefix}unban]`;
         text = `${user} разбанен на сервере!`;
         message.channel.send(infomessage(color, title, text));
     }

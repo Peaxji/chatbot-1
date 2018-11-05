@@ -1,5 +1,5 @@
 var perms = require('../permissions.js');
-const config = require('../config.js');
+const cnf = require('../config.js');
 const language = require('../language.json');
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -8,8 +8,8 @@ module.exports = {
     execute(message, args, client) {
         if(perms['root'].indexOf(message.author.id) == -1){
             color = 16711680;
-            title = `[${config.prefix}clear]`;
-            text = language.error1.replace('{0}', config.prefix);
+            title = `[${cnf.prefix}clear]`;
+            text = language.error1.replace('{0}', cnf.prefix);
             message.channel.send(infomessage(color, title, text));
             console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
             return;
@@ -29,15 +29,15 @@ function infomessage(color, title, text) {
 async function purge(message, args, client) {
     if(!args[0]){
         color = 16711680;
-        title = `[${config.prefix}clean]`;
-        text = `Введи число сообщений, которое хочешь удалить (0-100) ${config.prefix}clear 100`;
+        title = `[${cnf.prefix}clean]`;
+        text = `Введи число сообщений, которое хочешь удалить (0-100) ${cnf.prefix}clear 100`;
         message.channel.send(infomessage(color, title, text));
         return
     }
     const fetched = await message.channel.fetchMessages({limit: args[0]});
     var messages = [];
     fetched.forEach(function(element, index, array) {
-        if(element.author.id == client.user.id || element.content.startsWith(config.prefix)) messages.push(element);
+        if(element.author.id == client.user.id || element.content.startsWith(cnf.prefix)) messages.push(element);
     });
     messages.forEach(function(element, index, array) {
         message.channel.fetchMessage(element.id)

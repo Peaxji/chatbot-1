@@ -1,5 +1,5 @@
 var perms = require('../permissions.js');
-const config = require('../config.js');
+const cnf = require('../config.js');
 const language = require('../language.json');
 const Discord = require('discord.js');
 const fs = require('fs');
@@ -9,8 +9,8 @@ module.exports = {
         var badwordslist = JSON.parse(fs.readFileSync('words.json'));
         if(perms['root'].indexOf(message.author.id) == -1){
             color = 16711680;
-            title = `[${config.prefix}addword]`;
-            text = language.error1.replace('{0}', config.prefix);
+            title = `[${cnf.prefix}addword]`;
+            text = language.error1.replace('{0}', cnf.prefix);
             message.channel.send(infomessage(color, title, text));
             console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
             return;
@@ -19,22 +19,22 @@ module.exports = {
         var matches = replace.exec(message.content); 
         if(!matches){
             color = 16734464;
-            title = `[${config.prefix}addword]`;
-            text = `Используйте ${config.prefix}addmat [слово]!`;
+            title = `[${cnf.prefix}addword]`;
+            text = `Используйте ${cnf.prefix}addword [слово]!`;
             message.channel.send(infomessage(color, title, text));
             return;
         }
         if(badwordslist.indexOf("^"+matches[1]+"$") == -1){
         	badwordslist.push("^"+matches[1]+"$");
         	color = 16711680;
-            title = `[${config.prefix}addword]`;
+            title = `[${cnf.prefix}addword]`;
             text = `Слово было добавлено в список запрещённых слов!`;
             message.channel.send(infomessage(color, title, text));
             fs.writeFile('words.json', JSON.stringify(badwordslist), function() {/*console.log(badwordslist);*/});
         	return;
         }else{
         	color = 16711680;
-            title = `[${config.prefix}addword]`;
+            title = `[${cnf.prefix}addword]`;
             text = `Это слово уже есть в списке запрещённых слов!`;
             message.channel.send(infomessage(color, title, text));
         	return;

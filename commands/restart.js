@@ -1,5 +1,5 @@
 var perms = require('../permissions.js');
-const config = require('../config.js');
+const cnf = require('../config.js');
 const language = require('../language.json');
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -8,19 +8,19 @@ module.exports = {
     execute(message) {
         if(perms['root'].indexOf(message.author.id) == -1){
             color = 16711680;
-            title = `[${config.prefix}restart]`;
-            text = language.error1.replace('{0}', config.prefix);
+            title = `[${cnf.prefix}restart]`;
+            text = language.error1.replace('{0}', cnf.prefix);
             message.channel.send(infomessage(color, title, text));
             console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
             return;
         }
         color = 16711680;
-    	title = `[${config.prefix}restart]`;
+    	title = `[${cnf.prefix}restart]`;
     	text = `**Внимание!** Перезагрузка бота!`;
     	message.channel.send(infomessage(color, title, text));
 	    message.delete()
             .then(message => client.destroy())
-            .then(() => client.login(config.token))
+            .then(() => client.login(cnf.token))
             .then(() => console.log("Restarting the bot..."));
         return;
     }

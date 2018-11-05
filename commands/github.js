@@ -1,10 +1,10 @@
-const config = require('../config.js');
+const cnf = require('../config.js');
 const Discord = require('discord.js');
 module.exports = {
     name: 'github',
     execute(message, args) {
         color = 5504768;
-        title = `[${config.prefix}github]`;
+        title = `[${cnf.prefix}github]`;
         text = `\nМой github - **[жми](https://github.com/cheesegaproj/chatbot)**`;
         message.channel.send(infomessage(color, title, text));
     }

@@ -1,10 +1,10 @@
-const config = require('../config.js');
+const cnf = require('../config.js');
 const Discord = require('discord.js');
 module.exports = {
     name:'leavemessage',
     execute(client, member) {
         if(config.channellogonoff == 'on'){
-            var channel = client.guilds.get(config.serverid).channels.find('name', config.channellog);
+            var channel = client.guilds.get(cnf.serverid).channels.find('name', cnf.channellog);
             const embed = new Discord.RichEmbed()
                 .setAuthor(`${member.user.username}#${member.user.discriminator}`, member.user.avatarURL)
                 .setColor(16777215)

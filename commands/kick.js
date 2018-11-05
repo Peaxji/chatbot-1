@@ -1,5 +1,5 @@
 var perms = require('../permissions.js');
-const config = require('../config.js');
+const cnf = require('../config.js');
 const language = require('../language.json');
 const Discord = require('discord.js');
 module.exports = {
@@ -7,8 +7,8 @@ module.exports = {
     execute(message, args) {
         if(perms['root'].indexOf(message.author.id) == -1){
             color = 16711680;
-            title = `[${config.prefix}kick]`;
-            text = language.error1.replace('{0}', config.prefix);
+            title = `[${cnf.prefix}kick]`;
+            text = language.error1.replace('{0}', cnf.prefix);
             message.channel.send(infomessage(color, title, text));
             console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
             return;
@@ -17,15 +17,15 @@ module.exports = {
         let tounmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if(!tounmute){
             color = 16711680;
-            title = `[${config.prefix}kick]`;
-            text = `Используйте ${config.prefix}kick @user`;
+            title = `[${cnf.prefix}kick]`;
+            text = `Используйте ${cnf.prefix}kick @user`;
             message.channel.send(infomessage(color, title, text));
             return
         }
         member.kick()
         .then(() => console.log(`Kicked ${member.displayName}`));
         color = 16734464;
-        title = `[${config.prefix}kick]`;
+        title = `[${cnf.prefix}kick]`;
         text = `${member} кикнут с сервера!`;
         message.channel.send(infomessage(color, title, text));
         return;

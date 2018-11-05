@@ -1,5 +1,5 @@
 var perms = require('../permissions.js');
-const config = require('../config.js');
+const cnf = require('../config.js');
 const language = require('../language.json');
 const Discord = require('discord.js');
 module.exports = {
@@ -7,8 +7,8 @@ module.exports = {
     execute(message, args) {
         if(perms['root'].indexOf(message.author.id) == -1){
             color = 16711680;
-            title = `[${config.prefix}clean]`;
-            text = language.error1.replace('{0}', config.prefix);
+            title = `[${cnf.prefix}clean]`;
+            text = language.error1.replace('{0}', cnf.prefix);
             message.channel.send(infomessage(color, title, text));
             console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
             return;
@@ -16,8 +16,8 @@ module.exports = {
         async function clear() {
             if(!args[0]){
                 color = 16711680;
-                title = `[${config.prefix}clean]`;
-                text = language.clean1.replace('{0}', config.prefix);;
+                title = `[${cnf.prefix}clean]`;
+                text = language.clean1.replace('{0}', cnf.prefix);
                 message.channel.send(infomessage(color, title, text));
                 return
             }
@@ -25,7 +25,7 @@ module.exports = {
             console.log(fetched.size + ` ${language.clean2}`);
             message.channel.bulkDelete(fetched).then(() => {
                 color = 16777215;
-                title = `[${config.prefix}clean]`;
+                title = `[${cnf.prefix}clean]`;
                 text = language.clean3.replace('{0}', fetched.size);
                 message.channel.send(infomessage(color, title, text)).then(msg => {msg.delete(5000)});
             }) 

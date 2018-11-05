@@ -1,5 +1,5 @@
 var perms = require('../permissions.js');
-const config = require('../config.js');
+const cnf = require('../config.js');
 const Discord = require('discord.js');
 const language = require('../language.json');
 const client = new Discord.Client();
@@ -8,8 +8,8 @@ module.exports = {
     execute(message, args) {
         if(perms['root'].indexOf(message.author.id) == -1){
             color = 16711680;
-            title = `[${config.prefix}exit]`;
-            text = language.error1.replace('{0}', config.prefix);
+            title = `[${cnf.prefix}exit]`;
+            text = language.error1.replace('{0}', cnf.prefix);
             message.channel.send(infomessage(color, title, text));
             console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
             return;

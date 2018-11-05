@@ -1,34 +1,34 @@
-const config = require('../config.js');
+const cnf = require('../config.js');
 const Discord = require('discord.js');
 const fs = require('fs');
-var infobanlist = JSON.parse(fs.readFileSync('infoban.json'));
 module.exports = {
     name:'warnings',
     execute(message, args) {
+        var infobanlist = JSON.parse(fs.readFileSync('infoban.json'));
         let member = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if(!member){
             if(!infobanlist[message.author.id]){
                 color = 16777215;
-                title = `[${config.prefix}warnings]`;
+                title = `[${cnf.prefix}warnings]`;
                 text = `У вас  **0** предупреждений(я/е)!`;
                 message.channel.send(infomessage(color, title, text));
             return;
             }
             color = 16777215;
-            title = `[${config.prefix}warnings]`;
+            title = `[${cnf.prefix}warnings]`;
             text = `У вас  **${infobanlist[message.author.id]}** предупреждений(я/е)!`;
             message.channel.send(infomessage(color, title, text));
             return;
         }else{
             if(!infobanlist[member.id]){
                 color = 16777215;
-            title = `[${config.prefix}warnings]`;
+            title = `[${cnf.prefix}warnings]`;
             text = `У пользователя ${member},  **0** предупреждений(я/е)!`;
             message.channel.send(infomessage(color, title, text));
             return;
             }
             color = 16777215;
-            title = `[${config.prefix}warnings]`;
+            title = `[${cnf.prefix}warnings]`;
             text = `У пользователя ${member},  **${infobanlist[member.id]}** предупреждений(я/е)!`;
             message.channel.send(infomessage(color, title, text));
         }

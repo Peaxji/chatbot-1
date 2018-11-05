@@ -1,17 +1,15 @@
 var perms = require('../permissions.js');
-const config = require('../config.js');
+const cnf = require('../config.js');
 const language = require('../language.json');
 const Discord = require('discord.js');
 const fs = require('fs');
-var infobanlist = JSON.parse(fs.readFileSync('infoban.json'));
-const client = new Discord.Client();
 module.exports = {
     name: 'rwarnings',
     execute(message, args) {
         if(perms['owner'].indexOf(message.author.id) == -1){
             color = 16711680;
-            title = `[${config.prefix}rwarnings]`;
-            text = language.error1.replace('{0}', config.prefix);
+            title = `[${cnf.prefix}rwarnings]`;
+            text = language.error1.replace('{0}', cnf.prefix);
             message.channel.send(infomessage(color, title, text));
             console.log(`WARNING! ${message.author.username} does not have permission to execute this command!`);
             return;
@@ -19,17 +17,19 @@ module.exports = {
         let member = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if(!member){
             color = 16777215;
-            title = `[${config.prefix}rwarnings]`;
+            title = `[${cnf.prefix}rwarnings]`;
             text = `У вас удалены все предупреждения!`;
             message.channel.send(infomessage(color, title, text));
+            var infobanlist = JSON.parse(fs.readFileSync('infoban.json'));
             delete infobanlist[message.author.id];
             fs.writeFile('infoban.json', JSON.stringify(infobanlist), function() {/*console.log(badwordslist);*/});
             return;
         }
+        var infobanlist = JSON.parse(fs.readFileSync('infoban.json'));
         delete infobanlist[member.id];
         fs.writeFile('infoban.json', JSON.stringify(infobanlist), function() {/*console.log(badwordslist);*/});
         color = 16734464;
-        title = `[${config.prefix}rwarnings]`;
+        title = `[${cnf.prefix}rwarnings]`;
         text = `Все предупреждения у пользователя ${member} удалены!`;
         message.channel.send(infomessage(color, title, text));
     }
